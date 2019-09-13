@@ -1,0 +1,39 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { getProfile } from "../utils/Utils";
+
+const Landing = () => {
+  const profile = getProfile();
+
+  return (
+    <nav>
+      <div className="nav-wrapper">
+        <a href="https://rubato.no/" className="brand-logo center">
+          <b>rubato.</b>
+        </a>
+        <ul id="nav-mobile" className="left hide-on-med-and-down">
+          <li>
+            <i className="material-icons">account_circle</i>
+          </li>
+          {profile && (
+            <li>
+              <span style={{ fontWeight: "bold" }}>{profile.name}</span>
+            </li>
+          )}
+        </ul>
+        <ul className="right hide-on-med-and-down">
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+          <li>
+            <a href="https://rubato.no/">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
+export default Landing;
