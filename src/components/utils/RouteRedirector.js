@@ -6,7 +6,7 @@ const RouteRedirect = () => {
   const profile = getProfile();
   if (!profile) return <Redirect to="/" />;
 
-  switch (profile.role) {
+  switch (profile.user.role) {
     case ROLE.ADMIN:
       return <Redirect to="/admin-page" />;
     case ROLE.USER:

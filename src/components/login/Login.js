@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { SubmitButton, TextInput } from "../layout/FieldInput";
+import { setJwtHeader } from "../utils/Utils";
 
 const Login = ({ history }) => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ const Login = ({ history }) => {
         password: password
       })
       .then(response => {
-        localStorage.setItem("token", response.data.token);
+        setJwtHeader(response.data.token);
         history.push("/");
       })
       .catch(err => console.log(err, "login error"));

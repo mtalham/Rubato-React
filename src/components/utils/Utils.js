@@ -1,4 +1,5 @@
 import jsonwebtoken from "jsonwebtoken";
+import axios from "axios";
 
 export const ROLE = {
   ADMIN: "admin",
@@ -13,6 +14,30 @@ export const decodeToken = token =>
   });
 
 export const getProfile = () => {
-  const token = decodeToken(localStorage.getItem("token"));
-  return token ? token.payload : false;
+  const currentToken = localStorage.getItem("token");
+  const token = decodeToken(currentToken);
+  return token ? {user: token.payload, token: currentToken} : false;
+};
+
+export const setJwtHeader = token => {
+  localStorage.setItem("token", token);
+  if (token) {
+    axios.defaults.headers.common['Authorization'] = token;
+  } else delete axios.defaults.headers.common["Authorization"];
+};
+
+
+export const client = () => {
+  const defaultOptions = {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  };
+
+  return {
+    get: (url, options = {}) => axios.get(url, { ...defaultOptions, ...options }),
+    post: (url, data, options = {}) => axios.post(url, data, { ...defaultOptions, ...options }),
+    put: (url, data, options = {}) => axios.put(url, data, { ...defaultOptions, ...options }),
+    delete: (url, options = {}) => axios.delete(url, { ...defaultOptions, ...options }),
+  };
 };

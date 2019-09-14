@@ -7,17 +7,17 @@ const Landing = () => {
 
   return (
     <nav>
-      <div className="nav-wrapper">
+      <div className="nav-wrapper blue-grey darken-4">
         <a href="https://rubato.no/" className="brand-logo center">
           <b>rubato.</b>
         </a>
         <ul id="nav-mobile" className="left hide-on-med-and-down">
           <li>
-            <i className="material-icons">account_circle</i>
+            <i style={{marginLeft: "5px"}} className="material-icons">account_circle</i>
           </li>
           {profile && (
             <li>
-              <span style={{ fontWeight: "bold" }}>{profile.name}</span>
+              <span style={{ fontWeight: "bold", marginLeft: "5px" }}>{profile.user.name}</span>
             </li>
           )}
         </ul>
