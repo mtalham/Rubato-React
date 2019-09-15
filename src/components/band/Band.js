@@ -25,6 +25,7 @@ const Band = () => {
       <CardHeader
         title={band.name}
         icon={"edit"}
+        classname="halfway-fab btn-floating"
         onClick={() => {
           console.log("clicked");
         }}

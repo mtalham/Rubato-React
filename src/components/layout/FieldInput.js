@@ -31,13 +31,3 @@ export const SuggestRole = ({ value, onChange }) => (
   </select>
 );
 
-export const SubmitButton = ({ name }) => (
-  <button
-    style={{ marginTop: "20px" }}
-    className="btn waves-effect waves-light"
-    type="submit"
-  >
-    {name}
-    <i className="material-icons right">send</i>
-  </button>
-);

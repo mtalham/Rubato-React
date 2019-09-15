@@ -1,6 +1,7 @@
 import React from "react";
+import { IconButton } from "./Buttons";
 
-export const CardHeader = ({ title, icon, onClick }) => (
+export const CardHeader = ({ title, icon, onClick, classname }) => (
   <div className="card">
     <div className="card-image">
       <span
@@ -9,12 +10,7 @@ export const CardHeader = ({ title, icon, onClick }) => (
       >
         {title}
       </span>
-      <button
-        onClick={onClick}
-        className="btn-floating halfway-fab waves-effect waves-light teal darken-4"
-      >
-        <i className="material-icons">{icon}</i>
-      </button>
+      <IconButton onClick={onClick} icon={icon} classname={classname} />
     </div>
   </div>
 );
@@ -24,4 +20,3 @@ export const CardContent = ({ children }) => (
     <div className="card-content">{children}</div>
   </div>
 );
-

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { SubmitButton, TextInput } from "../layout/FieldInput";
+import { TextInput } from "../layout/FieldInput";
 import { setJwtHeader } from "../utils/Utils";
+import { SubmitButton } from "../layout/Buttons";
 
 const Login = ({ history }) => {
   const [username, setUsername] = useState("");

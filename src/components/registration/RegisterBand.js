@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { SubmitButton, SuggestRole, TextInput } from "../layout/FieldInput";
+import { SuggestRole, TextInput } from "../layout/FieldInput";
+import { SubmitButton } from "../layout/Buttons";
 
 const RegisterBand = ({ history }) => {
   const [name, setName] = useState("");

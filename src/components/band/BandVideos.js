@@ -1,5 +1,8 @@
 import React from "react";
 import css from "./Band.module.scss";
+import { createYouTubeEmbedLink } from "../utils/Utils";
+import { IconButton } from "../layout/Buttons";
+import { Section } from "../layout/Section";
 
 export const VideoCard = ({ src, videoName, title, description }) => {
   return (
@@ -16,9 +19,11 @@ export const VideoCard = ({ src, videoName, title, description }) => {
           />
         </div>
         <div className="card-content">
-          <a className="btn-floating right waves-effect waves-light red">
-            <i className="material-icons">delete</i>
-          </a>
+          <IconButton
+            onClick={() => {}}
+            icon={"delete"}
+            classname="right red btn-floating"
+          />
           <span className="card-title">{title}</span>
           <p>{description}</p>
         </div>
@@ -30,17 +35,27 @@ export const VideoCard = ({ src, videoName, title, description }) => {
 const BandVideos = ({ videos }) => {
   return (
     <div>
-      {videos.map(video => (
-        <div className={css.bandVideos}>
-          <VideoCard
-            title={video.name}
-            src={video.path}
-            description={video.type}
-            videoName={video.idVideo}
-            key={video.idVideo}
+      <Section
+        title={"Video Section"}
+        button={
+          <IconButton
+            text={"Add video"}
+            icon={"playlist_add"}
+            classname="blue-grey"
           />
-        </div>
-      ))}
+        }
+      >
+        {videos.map(video => (
+          <div className={css.bandVideos} key={video.idVideo}>
+            <VideoCard
+              title={video.name}
+              src={createYouTubeEmbedLink(video.path)}
+              description={video.type}
+              videoName={video.idVideo}
+            />
+          </div>
+        ))}
+      </Section>
     </div>
   );
 };
