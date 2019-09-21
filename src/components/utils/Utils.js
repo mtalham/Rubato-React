@@ -48,5 +48,5 @@ export const client = () => {
 export const createYouTubeEmbedLink = link =>
   link.replace(
     "www.youtube.com/watch?v=",
-    "www.youtube.com/embed?v="
+    "www.youtube.com/embed/"
   );

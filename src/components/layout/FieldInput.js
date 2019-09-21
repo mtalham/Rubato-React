@@ -1,7 +1,8 @@
 import React from "react";
 
-export const TextInput = ({ value, onChange, name, label, required }) => (
-  <div className="input-field col s12">
+export const TextInput = ({ value, onChange, name, label, required, icon }) => (
+  <div className="input-field col s6">
+    {icon && <i className="material-icons prefix">{icon}</i>}
     <input
       type="text"
       id={`${name}-input`}
@@ -30,4 +31,3 @@ export const SuggestRole = ({ value, onChange }) => (
     <option value="band">BAND</option>
   </select>
 );
-

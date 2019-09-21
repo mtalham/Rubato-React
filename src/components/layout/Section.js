@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classNames from 'classnames';
-import css from './Section.module.scss'
+import css from './styles/Section.module.scss'
 
 export const Section = ({ title, children, button, showFullUnderline, childStyle }) => (
   <div className={css.root}>

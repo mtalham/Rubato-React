@@ -15,9 +15,18 @@ export const SubmitButton = ({ name }) => (
 export const IconButton = ({ icon, classname, onClick, text }) => (
   <button
     onClick={onClick}
-    className={classNames("btn waves-effect waves-light", classname)}
+    className={classNames("btn waves-effect waves-light hoverable", classname)}
   >
     {text}
+    <i className="material-icons right">{icon}</i>
+  </button>
+);
+
+export const PopperButton = ({ onClick, icon, classname }) => (
+  <button
+    className={classNames("right red btn-floating hoverable", classname)}
+    onClick={onClick}
+  >
     <i className="material-icons right">{icon}</i>
   </button>
 );
