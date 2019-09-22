@@ -1,6 +1,7 @@
 import React from "react";
-import DeleteVideoPopper from "./DeleteVideoPopper";
+import DeleteBandPopper from "../DeleteBandPopper";
 import { client } from "../../utils/Utils";
+import { Card } from "../../layout/Card";
 
 const VideoCard = ({ src, videoId, title, description, refetch }) => {
   const handleDelete = () => {
@@ -12,8 +13,8 @@ const VideoCard = ({ src, videoId, title, description, refetch }) => {
   };
 
   return (
-    <div className="card">
-      <div className="card-image">
+    <Card
+      imageContent={
         <iframe
           src={src}
           frameBorder={0}
@@ -22,13 +23,12 @@ const VideoCard = ({ src, videoId, title, description, refetch }) => {
           title={videoId}
           width={"100%"}
         />
-      </div>
-      <div className="card-content">
-        <DeleteVideoPopper onDelete={handleDelete} />
-        <span className="card-title">{title}</span>
-        <p>{description}</p>
-      </div>
-    </div>
+      }
+    >
+      <DeleteBandPopper onDelete={handleDelete} />
+      <span className="card-title">{title}</span>
+      <p>{description}</p>
+    </Card>
   );
 };
 

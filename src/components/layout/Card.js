@@ -20,3 +20,10 @@ export const CardContent = ({ children }) => (
     <div className="card-content">{children}</div>
   </div>
 );
+
+export const Card = ({ children, imageContent }) => (
+  <div className="card">
+    <div className="card-image">{imageContent}</div>
+    <div className="card-content">{children}</div>
+  </div>
+);

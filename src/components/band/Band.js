@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { client, getProfile } from "../utils/Utils";
+import { getCurrentUser, getProfile } from "../utils/Utils";
 import Spinner from "../layout/Spinner";
 import { CardContent, CardHeader } from "../layout/Card";
 import BandVideos from "./bandvideos/BandVideos";
@@ -13,16 +13,13 @@ const Band = () => {
   const profile = getProfile();
 
   useEffect(() => {
-    client()
-      .get(
-        `http://localhost:8080/api/person/searchById/${profile.user.idPerson}`
-      )
-      .then(res => setBand(res.data));
+    getCurrentUser(profile.user.idPerson).then(res => setBand(res));
     // eslint-disable-next-line
   }, [profile.token, refetch]);
 
   if (!band) return <Spinner />;
 
+  console.log(band);
   return (
     <div style={{ marginTop: "100px" }} className="container">
       <CardHeader
@@ -49,7 +46,7 @@ const Band = () => {
         setRefetch={setRefetch}
       />
       <BandVideos videos={band.video} setRefetch={setRefetch} />
-      <BandImages />
+      <BandImages images={band.images} setRefetch={setRefetch} />
     </div>
   );
 };

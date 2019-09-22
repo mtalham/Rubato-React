@@ -46,7 +46,14 @@ export const client = () => {
 };
 
 export const createYouTubeEmbedLink = link =>
-  link.replace(
-    "www.youtube.com/watch?v=",
-    "www.youtube.com/embed/"
-  );
+  link.replace("www.youtube.com/watch?v=", "www.youtube.com/embed/");
+
+export const getCurrentUser = id =>
+  client()
+    .get(`http://localhost:8080/api/person/searchById/${id}`)
+    .then(res => res.data);
+
+export const handleLogout = () => {
+  localStorage.removeItem("token");
+  delete axios.defaults.headers.common["Authorization"];
+};

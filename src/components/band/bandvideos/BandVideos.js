@@ -23,7 +23,7 @@ const BandVideos = ({ videos, setRefetch }) => {
       }
     >
       <div className={css.bandVideos}>
-        {videos.map(video => (
+        {videos && videos.map(video => (
           <VideoCard
             title={video.name}
             src={createYouTubeEmbedLink(video.path)}

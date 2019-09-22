@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ReactPopper from "../../layout/PopperComponent";
-import { IconButton, PopperButton } from "../../layout/Buttons";
+import ReactPopper from "../layout/PopperComponent";
+import { IconButton, PopperButton } from "../layout/Buttons";
 
-const DeleteVideoPopper = ({ onDelete }) => {
+const DeleteBandPopper = ({ onDelete }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -30,4 +30,4 @@ const DeleteVideoPopper = ({ onDelete }) => {
   );
 };
 
-export default DeleteVideoPopper;
+export default DeleteBandPopper;
