@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+
 import { client } from "../../utils/Utils";
 import { TextInput } from "../../layout/FieldInput";
 import { SubmitButton } from "../../layout/Buttons";
 
-const ImageForm = ({ setShowForm, setRefetch }) => {
+const BandSectionForm = ({ setShowForm, setRefetch, form }) => {
   const [name, setName] = useState("");
   const [path, setPath] = useState("");
   const [description, setDescription] = useState("");
@@ -11,7 +13,7 @@ const ImageForm = ({ setShowForm, setRefetch }) => {
   const handleSubmit = event => {
     event.preventDefault();
     client()
-      .post("http://localhost:8080/api/image/upload", {
+      .post(`http://localhost:8080/api/${form}/upload`, {
         name: name,
         path: path,
         description: description
@@ -28,13 +30,13 @@ const ImageForm = ({ setShowForm, setRefetch }) => {
         <TextInput
           value={name}
           onChange={e => setName(e.target.value)}
-          label="Image Name"
+          label={form === "image" ? "Image Name" : "Album Name"}
           name="name"
         />
         <TextInput
           value={path}
           onChange={e => setPath(e.target.value)}
-          label="Image Link"
+          label={form === "image" ? "Image Link" : "Album Link"}
           name="path"
         />
         <TextInput
@@ -49,4 +51,12 @@ const ImageForm = ({ setShowForm, setRefetch }) => {
   );
 };
 
-export default ImageForm;
+BandSectionForm.propTypes = {
+  form: PropTypes.string.isRequired
+};
+
+BandSectionForm.defaultProps = {
+  form: "image"
+};
+
+export default BandSectionForm;

@@ -30,7 +30,7 @@ const Modal = ({
             {title}
           </div>
         )}
-        <div>{children}</div>
+        <div className="center-align">{children}</div>
       </div>
     </ReactModal>
   );

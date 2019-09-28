@@ -3,7 +3,7 @@ import axios from "axios";
 import { SuggestRole, TextInput } from "../layout/FieldInput";
 import { SubmitButton } from "../layout/Buttons";
 
-const RegisterBand = ({ history }) => {
+const Register = ({ history }) => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
@@ -105,4 +105,4 @@ const RegisterBand = ({ history }) => {
   );
 };
 
-export default RegisterBand;
+export default Register;

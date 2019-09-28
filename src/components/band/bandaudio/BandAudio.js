@@ -1,22 +1,25 @@
 import React, { useState } from "react";
+
 import { Section } from "../../layout/Section";
+import SpotifyPlayer from "../../layout/SpotifyPlayer";
 import { IconButton } from "../../layout/Buttons";
 import Modal from "../../layout/Modal";
 import { Card } from "../../layout/Card";
-import css from "../Band.module.scss";
-import DeleteBandPopper from "../DeleteBandPopper";
-import BandSectionForm from "./BandSectionForm";
-import { client } from "../../utils/Utils";
 
-const BandImages = ({ images, setRefetch }) => {
+import BandSectionForm from "../bandimages/BandSectionForm";
+import DeleteBandPopper from "../DeleteBandPopper";
+import { client } from "../../utils/Utils";
+import css from "../Band.module.scss";
+
+const BandAudio = ({ audios, setRefetch }) => {
   const [showForm, setShowForm] = useState(false);
 
   return (
     <Section
-      title={"Image Section"}
+      title={"Audio Section"}
       button={
         <IconButton
-          text={"Add image"}
+          text={"Add album"}
           icon={"playlist_add"}
           classname="blue-grey"
           onClick={() => setShowForm(true)}
@@ -24,38 +27,42 @@ const BandImages = ({ images, setRefetch }) => {
       }
     >
       <div className={css.bandVideos}>
-        {images &&
-          images.map(image => (
-            <ImageCard image={image} refetch={setRefetch} key={image.idImage} />
+        {audios &&
+          audios.map(audio => (
+            <AudioContent audio={audio} key={audio.idAudio} refetch={setRefetch} />
           ))}
       </div>
       <Modal
         isOpen={showForm}
-        title={"Add Image"}
+        title={"Add Spotify Album"}
         onClose={() => setShowForm(false)}
       >
-        <BandSectionForm setShowForm={setShowForm} setRefetch={setRefetch} />
+        <BandSectionForm
+          form="audio"
+          setRefetch={setRefetch}
+          setShowForm={setShowForm}
+        />
       </Modal>
     </Section>
   );
 };
 
-export default BandImages;
+export default BandAudio;
 
-const ImageCard = ({ image, refetch }) => {
+const AudioContent = ({ audio, refetch }) => {
   const handleDelete = () => {
     client()
-      .delete(`http://localhost:8080/api/image/delete/${image.idImage}`)
+      .delete(`http://localhost:8080/api/audio/delete/${audio.idAudio}`)
       .then(() => {
         refetch(true);
       });
   };
 
   return (
-    <Card imageContent={<img src={image.path} alt="new" />}>
+    <Card imageContent={<SpotifyPlayer uri={audio.path} />}>
       <DeleteBandPopper onDelete={handleDelete} />
-      <span className="card-title">{image.name}</span>
-      <p>{image.description}</p>
+      <span className="card-title">{audio.name}</span>
+      <p>{audio.description}</p>
     </Card>
   );
 };

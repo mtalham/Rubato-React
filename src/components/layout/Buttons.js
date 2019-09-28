@@ -15,7 +15,9 @@ export const SubmitButton = ({ name }) => (
 export const IconButton = ({ icon, classname, onClick, text }) => (
   <button
     onClick={onClick}
-    className={classNames("btn waves-effect waves-light hoverable", classname)}
+    className={classNames("btn waves-effect waves-light hoverable", classname, {
+      "halfway-fab btn-floating": !text
+    })}
   >
     {text}
     <i className="material-icons right">{icon}</i>

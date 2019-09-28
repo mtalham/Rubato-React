@@ -8,13 +8,13 @@ const RouteRedirect = () => {
 
   switch (profile.user.role) {
     case ROLE.ADMIN:
-      return <Redirect to="/admin-page" />;
+      return <Redirect to="/admin" />;
     case ROLE.USER:
-      return <Redirect to="/user-profile-page" />;
+      return <Redirect to="/user-profile" />;
     case ROLE.BAND:
       return <Redirect to="/band" />;
     default:
-      return <Redirect to="/" />;
+      return <Redirect to="/login" />;
   }
 };
 
