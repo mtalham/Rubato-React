@@ -54,7 +54,7 @@ const AudioContent = ({ audio, refetch }) => {
     client()
       .delete(`http://localhost:8080/api/audio/delete/${audio.idAudio}`)
       .then(() => {
-        refetch(true);
+        refetch(5);
       });
   };
 

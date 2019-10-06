@@ -20,7 +20,7 @@ const BandSectionForm = ({ setShowForm, setRefetch, form }) => {
       })
       .then(() => {
         setShowForm(false);
-        setRefetch(true);
+        setRefetch(6);
       });
   };
 

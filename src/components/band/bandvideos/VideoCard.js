@@ -8,7 +8,7 @@ const VideoCard = ({ src, videoId, title, description, refetch }) => {
     client()
       .delete(`http://localhost:8080/api/video/delete/${videoId}`)
       .then(() => {
-        refetch(true);
+        refetch(3);
       });
   };
 

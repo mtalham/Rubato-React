@@ -18,7 +18,7 @@ const VideoForm = ({ setShowForm, setRefetch }) => {
       })
       .then(() => {
         setShowForm(false);
-        setRefetch(true);
+        setRefetch(4);
       });
   };
 

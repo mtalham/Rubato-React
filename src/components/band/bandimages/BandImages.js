@@ -47,7 +47,7 @@ const ImageCard = ({ image, refetch }) => {
     client()
       .delete(`http://localhost:8080/api/image/delete/${image.idImage}`)
       .then(() => {
-        refetch(true);
+        refetch(7);
       });
   };
 

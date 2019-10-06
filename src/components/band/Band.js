@@ -9,7 +9,7 @@ import BandAudio from "./bandaudio/BandAudio";
 
 const Band = () => {
   const [band, setBand] = useState(null);
-  const [refetch, setRefetch] = useState(false);
+  const [refetch, setRefetch] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const profile = getProfile();
 

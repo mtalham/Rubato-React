@@ -22,7 +22,7 @@ const UpdateBand = ({ showForm, setShowForm, band, setRefetch }) => {
       })
       .then(() => {
         setShowForm(false);
-        setRefetch(true);
+        setRefetch(2);
       });
   };
 
