@@ -18,16 +18,32 @@ TextInput.defaultProps = {
   required: true
 };
 
-export const SuggestRole = ({ value, onChange }) => (
+export const SuggestSelect = ({ value, onChange, options }) => (
   <select
     value={value}
     onChange={onChange}
-    className="browser-default center-align"
+    className="browser-default"
   >
-    <option disabled value="">
-      Choose your role
+    <option key={9999} disabled value="">
+      Select option
     </option>
-    <option value="user">USER</option>
-    <option value="band">BAND</option>
+    {options}
   </select>
 );
+
+export const DateInput = ({ value, onChange, name, label, required }) => (
+  <div className="input-field col s6">
+    <input
+      type="date"
+      id={`${name}-input`}
+      value={value}
+      onChange={onChange}
+      required={required}
+    />
+    <label htmlFor={`${name}-input`}>{label}</label>
+  </div>
+);
+
+DateInput.defaultProps = {
+  required: true
+};

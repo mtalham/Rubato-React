@@ -1,13 +1,12 @@
 @import '/constants.module';
 
 .item {
-  border: solid 1px $light-grey;
+  //border: solid 1px $light-grey;
   border-radius: 7px;
   background-color: white;
   margin-bottom: $normal-margin;
   padding: $normal-margin $normal-margin $normal-margin;
   transition: all 0.1s;
-  //display: flex;
   justify-content: space-between;
   @include box-shadow;
   &:hover {

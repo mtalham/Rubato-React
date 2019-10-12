@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCurrentUser, ROLE } from "../utils/Utils";
+import {getCurrentUser, getProfile, ROLE} from "../utils/Utils";
 import Spinner from "../layout/Spinner";
 import { CardHeader } from "../layout/Card";
 import { BandContent } from "../band/Band";
@@ -8,10 +8,9 @@ import {
   ReadOnlyImageSection,
   ReadOnlyVideoSection
 } from "./BandDetails";
-import { useProfile } from "../utils/ProfileProvider";
 
 const UserDetails = ({ match, history }) => {
-  const profile = useProfile();
+  const profile = getProfile();
   const [user, setUser] = useState(null);
   const { id } = match.params;
 
@@ -21,7 +20,7 @@ const UserDetails = ({ match, history }) => {
 
   const goBack = () => {
     const uri =
-      profile && profile.role === ROLE.ADMIN ? "/admin" : "/user-profile";
+      profile && profile.user.role === ROLE.ADMIN ? "/admin" : "/user-profile";
     history.push(uri);
   };
 

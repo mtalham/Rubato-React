@@ -47,3 +47,7 @@ export const Collection = ({ children }) => (
 );
 
 const itemStyle = { marginRight: "30px", marginTop: "15px" };
+
+export const List = ({ children }) => {
+  return <li className="collection-item">{children}</li>;
+};

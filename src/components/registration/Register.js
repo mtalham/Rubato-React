@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { SuggestRole, TextInput } from "../layout/FieldInput";
+import { SuggestSelect, TextInput } from "../layout/FieldInput";
 import { SubmitButton } from "../layout/Buttons";
+
+const roleOptions = [
+  <option key={2} value="user">
+    USER
+  </option>,
+  <option key={3} value="band">
+    BAND
+  </option>
+];
 
 const Register = ({ history }) => {
   const [name, setName] = useState("");
@@ -41,7 +50,11 @@ const Register = ({ history }) => {
       </h6>
       <form onSubmit={handleSubmit}>
         <div className="container center-align">
-          <SuggestRole value={role} onChange={e => setRole(e.target.value)} />
+          <SuggestSelect
+            options={roleOptions}
+            value={role}
+            onChange={e => setRole(e.target.value)}
+          />
           {role && (
             <>
               <TextInput
