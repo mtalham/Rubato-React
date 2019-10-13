@@ -6,6 +6,8 @@ import BandVideos from "./bandvideos/BandVideos";
 import BandImages from "./bandimages/BandImages";
 import UpdateBand from "./UpdateBand";
 import BandAudio from "./bandaudio/BandAudio";
+import { Bookings } from "../user/BookingList";
+import { Section } from "../layout/Section";
 
 const Band = () => {
   const [band, setBand] = useState(null);
@@ -35,6 +37,13 @@ const Band = () => {
         band={band}
         setRefetch={setRefetch}
       />
+      <Section title={"Bookings"} showFullUnderline>
+        {band.bookings && band.bookings.length > 0 ? (
+          <Bookings bookings={band.bookings} />
+        ) : (
+          <div>You don't have any bookings yet.</div>
+        )}
+      </Section>
       <BandVideos videos={band.video} setRefetch={setRefetch} />
       <BandAudio audios={band.audio} setRefetch={setRefetch} />
       <BandImages images={band.images} setRefetch={setRefetch} />

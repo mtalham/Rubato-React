@@ -22,7 +22,11 @@ const BookingForm = ({ bandList, setShowForm }) => {
 
   const isValid = () => {
     if (moment(fromDate).isAfter(toDate) || moment(toDate).isBefore(fromDate)) {
-      setError("Start date cannot be after end date");
+      setError("Start date cannot be after end date.");
+      return false;
+    }
+    if (moment(toDate).isBefore(moment())) {
+      setError("Booking cannot be done in the past.");
       return false;
     }
     return true;

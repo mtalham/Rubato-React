@@ -4,7 +4,7 @@ import { getProfile, ROLE } from "./Utils";
 
 const RouteRedirect = () => {
   const profile = getProfile();
-  if (!profile) return <Redirect to="/" />;
+  if (!profile) return <Redirect to="/login" />;
 
   switch (profile.user.role) {
     case ROLE.ADMIN:

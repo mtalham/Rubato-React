@@ -1,5 +1,6 @@
 import jsonwebtoken from "jsonwebtoken";
 import axios from "axios";
+import moment from "moment";
 
 export const ROLE = {
   ADMIN: "admin",
@@ -57,3 +58,5 @@ export const handleLogout = () => {
   localStorage.removeItem("token");
   delete axios.defaults.headers.common["Authorization"];
 };
+
+export const date = d => moment(d).format("DD-MM-YYYY");

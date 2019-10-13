@@ -22,7 +22,7 @@ const User = () => {
   return (
     <div className="container" style={{ marginTop: "30px" }}>
       <Section
-        title={"Band Booking"}
+        title={"Bookings"}
         button={
           <IconButton
             text={"Add Booking"}

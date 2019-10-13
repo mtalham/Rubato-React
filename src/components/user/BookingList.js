@@ -1,6 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { client, getProfile } from "../utils/Utils";
+import moment from "moment";
+import { client, date, getProfile } from "../utils/Utils";
 import { List } from "../layout/Collection";
+
+export const Bookings = ({ bookings }) => (
+  <ul className="collection">
+    {bookings
+      .filter(it => moment(it.toDate).isAfter(moment().subtract(1, "days")))
+      .map(booking => (
+        <List key={booking.id}>
+          <b>Start:</b> {date(booking.fromDate)}
+          <br />
+          <b>End:</b> {date(booking.toDate)}
+          <br />
+        </List>
+      ))}
+  </ul>
+);
 
 const BookingList = () => {
   const [bookings, setBookings] = useState(null);
@@ -18,18 +34,7 @@ const BookingList = () => {
     return <div>You did not have any bookings.</div>;
   }
 
-  return (
-    <ul className="collection">
-      {bookings.map(booking => (
-        <List key={booking.id}>
-          Start: {booking.fromDate}
-          <br />
-          End: {booking.toDate}
-          <br />
-        </List>
-      ))}
-    </ul>
-  );
+  return <Bookings bookings={bookings} />;
 };
 
 export default BookingList;
