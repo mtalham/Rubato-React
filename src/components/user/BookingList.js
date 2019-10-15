@@ -18,7 +18,7 @@ export const Bookings = ({ bookings }) => (
   </ul>
 );
 
-const BookingList = () => {
+const BookingList = ({ refetch }) => {
   const [bookings, setBookings] = useState(null);
   const profile = getProfile();
 
@@ -28,7 +28,7 @@ const BookingList = () => {
         `http://localhost:8080/api/booking/user-bookings/${profile.user.idPerson}`
       )
       .then(res => setBookings(res.data));
-  }, [profile.user.idPerson]);
+  }, [profile.user.idPerson, refetch]);
 
   if (bookings === null || bookings.length === 0) {
     return <div>You did not have any bookings.</div>;

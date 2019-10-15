@@ -23,6 +23,8 @@ const Register = ({ history }) => {
   //const [vipps, setVipps] = useState("");
   const [price, setPrice] = useState("");
 
+  const [error, setError] = useState(null);
+
   const handleSubmit = event => {
     event.preventDefault();
     axios
@@ -37,10 +39,10 @@ const Register = ({ history }) => {
         price: price,
         role: role
       })
-      .then(response => {
-        console.log(response.data);
-      });
-    history.push("/login");
+      .then(() => {
+        history.push("/login");
+      })
+      .catch(e => setError(e.response.data));
   };
 
   return (
@@ -69,6 +71,7 @@ const Register = ({ history }) => {
                 label="Email"
                 name="username"
               />
+              {error && <div style={{ color: "red" }}>{error.message}</div>}
               <TextInput
                 value={phone}
                 onChange={event => setPhone(event.target.value)}

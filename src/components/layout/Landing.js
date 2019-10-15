@@ -11,7 +11,7 @@ const Landing = () => {
         <a href="https://rubato.no/" className="brand-logo center">
           <b>rubato.</b>
         </a>
-        <ul id="nav-mobile" className="left hide-on-med-and-down">
+        <ul className="left hide-on-med-and-down">
           <li>
             <i style={{ marginLeft: "5px" }} className="material-icons">
               account_circle
@@ -46,6 +46,38 @@ const Landing = () => {
             <a href="https://rubato.no/">Blog</a>
           </li>
         </ul>
+        {window.innerWidth <= 550 && (
+          <>
+            <ul className="right">
+              {profile ? (
+                <li>
+                  <Link to="/login" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                </>
+              )}
+            </ul>
+            <ul className="left">
+              {profile ? (
+                <li>
+                  <span style={{ marginLeft: "3px" }}>{profile.user.name}</span>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/register">Register</Link>
+                  </li>
+                </>
+              )}
+            </ul>
+          </>
+        )}
       </div>
     </nav>
   );

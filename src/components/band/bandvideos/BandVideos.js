@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import css from "../Band.module.scss";
-import { createYouTubeEmbedLink } from "../../utils/Utils";
 import { IconButton } from "../../layout/Buttons";
 import { Section } from "../../layout/Section";
 import Modal from "../../layout/Modal";
@@ -26,7 +25,7 @@ const BandVideos = ({ videos, setRefetch }) => {
         {videos && videos.map(video => (
           <VideoCard
             title={video.name}
-            src={createYouTubeEmbedLink(video.path)}
+            src={video.path}
             description={video.type}
             videoId={video.idVideo}
             key={video.idVideo}

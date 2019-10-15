@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TextInput } from "../../layout/FieldInput";
-import { client } from "../../utils/Utils";
+import {client, createYouTubeEmbedLink} from "../../utils/Utils";
 import { SubmitButton } from "../../layout/Buttons";
 
 const VideoForm = ({ setShowForm, setRefetch }) => {
@@ -13,7 +13,7 @@ const VideoForm = ({ setShowForm, setRefetch }) => {
     client()
       .post("http://localhost:8080/api/video/upload", {
         name: name,
-        path: path,
+        path: createYouTubeEmbedLink(path),
         type: description
       })
       .then(() => {

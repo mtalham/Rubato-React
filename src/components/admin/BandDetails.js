@@ -1,7 +1,6 @@
 import React from "react";
 import css from "../band/Band.module.scss";
 import { Card } from "../layout/Card";
-import { createYouTubeEmbedLink } from "../utils/Utils";
 import { Section } from "../layout/Section";
 import SpotifyPlayer from "../layout/SpotifyPlayer";
 
@@ -13,7 +12,7 @@ export const ReadOnlyVideoSection = ({ user }) => (
           <Card
             imageContent={
               <iframe
-                src={createYouTubeEmbedLink(video.path)}
+                src={video.path}
                 frameBorder={0}
                 allow="autoplay; encrypted-media"
                 allowFullScreen

@@ -40,7 +40,7 @@ const User = () => {
           >
             <BookingForm bandList={bandList} setShowForm={setShowForm} />
           </Modal>
-          <BookingList />
+          <BookingList refetch={showForm} />
         </>
       </Section>
       <Section title={"Band List"} showFullUnderline>

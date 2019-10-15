@@ -7,6 +7,7 @@ import { SubmitButton } from "../layout/Buttons";
 const Login = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -19,7 +20,7 @@ const Login = ({ history }) => {
         setJwtHeader(response.data.token);
         history.push("/");
       })
-      .catch(err => console.log(err, "login error"));
+      .catch(err => setError(err.response.data));
   };
 
   return (
@@ -35,12 +36,14 @@ const Login = ({ history }) => {
             label="Username"
             name="username"
           />
+          {error && <div style={{ color: "red" }}>{error.username}</div>}
           <TextInput
             value={password}
             onChange={event => setPassword(event.target.value)}
             label="Password"
             name="password"
           />
+          {error && <div style={{ color: "red" }}>{error.password}</div>}
           <SubmitButton name="Login" />
         </div>
       </form>
