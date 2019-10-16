@@ -52,7 +52,7 @@ export default BandAudio;
 const AudioContent = ({ audio, refetch }) => {
   const handleDelete = () => {
     client()
-      .delete(`http://localhost:8080/api/audio/delete/${audio.idAudio}`)
+      .delete(`api/audio/delete/${audio.idAudio}`)
       .then(() => {
         refetch(5);
       });

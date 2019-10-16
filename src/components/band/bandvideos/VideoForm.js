@@ -11,7 +11,7 @@ const VideoForm = ({ setShowForm, setRefetch }) => {
   const handleSubmit = event => {
     event.preventDefault();
     client()
-      .post("http://localhost:8080/api/video/upload", {
+      .post("api/video/upload", {
         name: name,
         path: createYouTubeEmbedLink(path),
         type: description

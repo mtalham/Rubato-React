@@ -14,7 +14,7 @@ const UpdateBand = ({ showForm, setShowForm, band, setRefetch }) => {
     event.preventDefault();
 
     client()
-      .put(`http://localhost:8080/api/person/update-band/${band.idPerson}`, {
+      .put(`api/person/update-band/${band.idPerson}`, {
         name: bandName,
         about: about,
         phone: phone,

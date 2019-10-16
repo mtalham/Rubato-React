@@ -45,7 +45,7 @@ export default BandImages;
 const ImageCard = ({ image, refetch }) => {
   const handleDelete = () => {
     client()
-      .delete(`http://localhost:8080/api/image/delete/${image.idImage}`)
+      .delete(`api/image/delete/${image.idImage}`)
       .then(() => {
         refetch(7);
       });

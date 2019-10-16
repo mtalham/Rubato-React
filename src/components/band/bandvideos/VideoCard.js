@@ -6,7 +6,7 @@ import { Card } from "../../layout/Card";
 const VideoCard = ({ src, videoId, title, description, refetch }) => {
   const handleDelete = () => {
     client()
-      .delete(`http://localhost:8080/api/video/delete/${videoId}`)
+      .delete(`api/video/delete/${videoId}`)
       .then(() => {
         refetch(3);
       });
@@ -26,8 +26,10 @@ const VideoCard = ({ src, videoId, title, description, refetch }) => {
       }
     >
       <DeleteBandPopper onDelete={handleDelete} />
+      <div style={{ maxWidth: "fit-content" }}>
       <span className="card-title">{title}</span>
       <p>{description}</p>
+      </div>
     </Card>
   );
 };

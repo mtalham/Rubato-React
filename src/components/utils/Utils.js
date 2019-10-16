@@ -53,7 +53,7 @@ export const createYouTubeEmbedLink = link =>
 
 export const getCurrentUser = id =>
   client()
-    .get(`http://localhost:8080/api/person/searchById/${id}`)
+    .get(`api/person/searchById/${id}`)
     .then(res => res.data);
 
 export const handleLogout = () => {

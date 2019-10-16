@@ -28,7 +28,7 @@ const Register = ({ history }) => {
   const handleSubmit = event => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/api/register/signUp", {
+      .post("api/register/signUp", {
         name: name,
         username: username,
         phone: phone,

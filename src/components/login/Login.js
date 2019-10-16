@@ -12,7 +12,7 @@ const Login = ({ history }) => {
   const handleSubmit = event => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/api/register/signIn", {
+      .post("api/register/signIn", {
         username: username,
         password: password
       })

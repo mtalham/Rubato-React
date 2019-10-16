@@ -13,7 +13,7 @@ const BandSectionForm = ({ setShowForm, setRefetch, form }) => {
   const handleSubmit = event => {
     event.preventDefault();
     client()
-      .post(`http://localhost:8080/api/${form}/upload`, {
+      .post(`api/${form}/upload`, {
         name: name,
         path: path,
         description: description

@@ -37,7 +37,7 @@ const BookingForm = ({ bandList, setShowForm }) => {
 
     if (isValid()) {
       client()
-        .post("http://localhost:8080/api/booking/create", {
+        .post("api/booking/create", {
           fromDate: fromDate,
           toDate: toDate,
           bandId: band

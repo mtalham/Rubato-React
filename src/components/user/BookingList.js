@@ -25,7 +25,7 @@ const BookingList = ({ refetch }) => {
   useEffect(() => {
     client()
       .get(
-        `http://localhost:8080/api/booking/user-bookings/${profile.user.idPerson}`
+        `api/booking/user-bookings/${profile.user.idPerson}`
       )
       .then(res => setBookings(res.data));
   }, [profile.user.idPerson, refetch]);
