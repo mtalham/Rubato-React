@@ -3,26 +3,34 @@ import axios from "axios";
 import { TextInput } from "../layout/FieldInput";
 import { setJwtHeader } from "../utils/Utils";
 import { SubmitButton } from "../layout/Buttons";
+import Spinner from "../layout/Spinner";
 
 const Login = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
+    setLoading(true);
     axios
       .post("api/register/signIn", {
         username: username,
         password: password
       })
       .then(response => {
+        setLoading(false);
         setJwtHeader(response.data.token);
         history.push("/");
       })
-      .catch(err => setError(err.response.data));
+      .catch(err => {
+        setLoading(false);
+        setError(err.response.data);
+      });
   };
 
+  if (isLoading) return <Spinner/>;
   return (
     <div id="Login" className="input-field center-align">
       <h6>

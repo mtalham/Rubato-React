@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getCurrentUser, getProfile } from "../utils/Utils";
+import {currentBookings, getCurrentUser, getProfile} from "../utils/Utils";
 import Spinner from "../layout/Spinner";
 import { CardContent, CardHeader } from "../layout/Card";
 import BandVideos from "./bandvideos/BandVideos";
@@ -22,7 +22,6 @@ const Band = () => {
 
   if (!band) return <Spinner />;
 
-  console.log(band);
   return (
     <div style={{ marginTop: "100px" }} className="container">
       <CardHeader
@@ -38,10 +37,10 @@ const Band = () => {
         setRefetch={setRefetch}
       />
       <Section title={"Bookings"} showFullUnderline>
-        {band.bookings && band.bookings.length > 0 ? (
+        {band.bookings && currentBookings(band.bookings).length > 0 ? (
           <Bookings bookings={band.bookings} />
         ) : (
-          <div>You don't have any bookings yet.</div>
+          <div>You don't have any bookings in future.</div>
         )}
       </Section>
       <BandVideos videos={band.video} setRefetch={setRefetch} />

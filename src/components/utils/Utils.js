@@ -53,7 +53,7 @@ export const createYouTubeEmbedLink = link =>
 
 export const getCurrentUser = id =>
   client()
-    .get(`api/person/searchById/${id}`)
+    .get(`https://rubato-web.herokuapp.com/api/person/searchById/${id}`)
     .then(res => res.data);
 
 export const handleLogout = () => {
@@ -62,3 +62,8 @@ export const handleLogout = () => {
 };
 
 export const date = d => moment(d).format("DD-MM-YYYY");
+
+export const currentBookings = bookings =>
+  bookings.filter(it =>
+    moment(it.toDate).isAfter(moment().subtract(1, "days"))
+  );
